@@ -11,7 +11,6 @@ def to_str(n: float) -> str:
 
     Args:
          n: float - the float argument
-    
     Return:
         returns the float as a type string
     """
