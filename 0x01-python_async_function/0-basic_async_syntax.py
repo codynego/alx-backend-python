@@ -4,6 +4,10 @@ import asyncio
 from typing import Union
 import random
 
+"""
+asyncio function
+"""
+
 
 async def wait_random(max_delay: int = 10) -> float:
     """
