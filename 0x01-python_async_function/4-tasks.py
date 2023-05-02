@@ -2,7 +2,7 @@
 
 
 """
-execute multiple coroutines at the same time with async
+execute multiple tasks at the same time with async
 """
 
 import asyncio
@@ -12,7 +12,7 @@ task_wait_random = __import__('3-tasks').task_wait_random
 
 async def task_wait_n(n: int, max_delay: int) -> List[Union[int, float]]:
     """
-    Spawns `n` instances of `wait_random` with the specified
+    Spawns `n` instances of `task_wait_random` with the specified
     `max_delay` and returns a sorted list
     of the resulting delays.
 
@@ -25,7 +25,7 @@ async def task_wait_n(n: int, max_delay: int) -> List[Union[int, float]]:
         A sorted list of the resulting delays (float values).
     """
     # Create a list to hold the delay values
-    delays: Union[int, float] = []
+    #delays: Union[int, float] = []
 
     # Create a list to hold the coroutines for wait_random
     tasks: Union[int, float] = [task_wait_random(max_delay) for _ in range(n)]
