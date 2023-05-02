@@ -33,4 +33,3 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
 
     # Return the sorted list of delays
     return (delays)
-
