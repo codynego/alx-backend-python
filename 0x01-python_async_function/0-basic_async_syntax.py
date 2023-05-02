@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 import asyncio
+from typing import Union
 import random
 
 
-async def wait_random(max_delay: float = 10) -> float:
+async def wait_random(max_delay: int = 10) -> float:
     """
     Waits for a random delay between 0 and
     max_delay (inclusive) seconds and returns it.
@@ -15,6 +16,6 @@ async def wait_random(max_delay: float = 10) -> float:
     Returns:
         The delay value in seconds.
     """
-    delay: float = random.uniform(0, max_delay)
+    delay: Union[int, float] = random.uniform(0, max_delay)
     await asyncio.sleep(delay)
     return delay
