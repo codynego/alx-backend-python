@@ -5,7 +5,7 @@ from typing import Union
 import random
 
 
-async def wait_random(max_delay: int = 10) -> Union[int, float]:
+async def wait_random(max_delay: int = 10) -> Union:
     """
     Waits for a random delay between 0 and
     max_delay (inclusive) seconds and returns it.
