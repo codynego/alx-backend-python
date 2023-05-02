@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+"""
+asyncio basic
+"""
+
 import asyncio
 from typing import Union
 import random
