@@ -13,7 +13,7 @@ def floor(n: float) -> int:
     Args:
         n: (float) - the float
 
-    Return: 
+    Return:
         returns the floor of the float
     """
     return (math.floor(n))
