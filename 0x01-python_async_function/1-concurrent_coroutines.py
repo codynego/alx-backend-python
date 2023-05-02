@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 import asyncio
-from typing import List
+from typing import List, Union
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: float) -> List[float]:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     Spawns `n` instances of `wait_random` with the specified
     `max_delay` and returns a sorted list
@@ -20,10 +20,10 @@ async def wait_n(n: int, max_delay: float) -> List[float]:
         A sorted list of the resulting delays (float values).
     """
     # Create a list to hold the delay values
-    delays = []
+    delays: Union[int, float] = []
 
     # Create a list to hold the coroutines for wait_random
-    coroutines = [wait_random(max_delay) for _ in range(n)]
+    coroutines: Union[int, float] = [wait_random(max_delay) for _ in range(n)]
 
     # Use asyncio.gather() to run all the coroutines concurrently
     results = await asyncio.gather(*coroutines)
@@ -32,5 +32,5 @@ async def wait_n(n: int, max_delay: float) -> List[float]:
     delays = sorted(results)
 
     # Return the sorted list of delays
-    return delays
+    return (delays)
 
