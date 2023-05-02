@@ -1,40 +1,22 @@
 #!/usr/bin/env python3
+""" Takes int arg, waits for random delay """
 
-
-"""
-execute multiple tasks at the same time with async
-"""
-
+from typing import List
 import asyncio
-from typing import List, Union
+import random
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-async def task_wait_n(n: int, max_delay: int) -> List[Union[int, float]]:
-    """
-    Spawns `n` instances of `task_wait_random` with the specified
-    `max_delay` and returns a sorted list
-    of the resulting delays.
+async def task_wait_n(n: int, max_delay: int = 10) -> List[float]:
+    """ Waits for ran delay until max_delay, returns list of actual delays """
+    spawn_list = []
+    delay_list = []
+    for i in range(n):
+        delayed_task = task_wait_random(max_delay)
+        delayed_task.add_done_callback(lambda x: delay_list.append(x.result()))
+        spawn_list.append(delayed_task)
 
-    Args:
-        n: The number of times to spawn `task_wait_random`.
-        max_delay: The maximum delay value to use for each
-        `wait_random` instance.
+    for spawn in spawn_list:
+        await spawn
 
-    Returns:
-        A sorted list of the resulting delays (float values).
-    """
-    # Create a list to hold the delay values
-    #delays: Union[int, float] = []
-
-    # Create a list to hold the coroutines for wait_random
-    tasks: Union[int, float] = [task_wait_random(max_delay) for _ in range(n)]
-
-    # Use asyncio.gather() to run all the task concurrently
-    results = await asyncio.gather(*tasks)
-
-    # Sort the resulting delay values in ascending order
-    delays = sorted(results)
-
-    # Return the sorted list of delays
-    return (delays)
+    return delay_list
