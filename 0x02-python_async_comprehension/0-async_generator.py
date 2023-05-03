@@ -13,6 +13,9 @@ async def async_generator() -> AsyncGenerator[float, None]:
     """
     a coroutine that loops 10 times wait for 1 seconds
     and yield a random number
+
+    Returns:
+        no returrs
     """
     for i in range(10):
         await asyncio.sleep(1)
